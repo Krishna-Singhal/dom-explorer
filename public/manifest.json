@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "DOM Explorer",
+    "version": "1.0.0",
+    "description": "Explore and analyze the DOM effortlessly. This extension helps you validate interactive elements like forms and inputs using an intuitive Validator feature.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon-16.png",
+            "48": "icons/icon-48.png",
+            "128": "icons/icon-128.png"
+        }
+    },
+    "icons": {
+        "16": "icons/icon-16.png",
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+    },
+    "permissions": ["scripting", "tabs", "activeTab"],
+    "host_permissions": ["<all_urls>"],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content-script.bundle.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["icons/*"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
