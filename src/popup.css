@@ -98,13 +98,13 @@ body {
     height: 100%;
 }
 
-.scroll-container {
+html {
     overflow: auto;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
 }
 
-.scroll-container::-webkit-scrollbar {
+html::-webkit-scrollbar {
     width: 0;
     height: 0;
     display: none;
