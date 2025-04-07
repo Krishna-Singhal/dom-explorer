@@ -366,18 +366,19 @@
                 return;
             }
 
-            if (
-                (input.type === "radio" || input.type === "checkbox") &&
-                name &&
-                !processedNames.has(name)
-            ) {
-                const group = Array.from(document.querySelectorAll(`input[name="${name}"]`));
-                const selected = getRandomIndices(group.length, input.type === "checkbox" ? 2 : 1);
-                group.forEach((el, idx) => {
-                    el.checked = selected.includes(idx);
-                    el.dispatchEvent(new Event("change", { bubbles: true }));
-                });
-                processedNames.add(name);
+            if ((input.type === "radio" || input.type === "checkbox") && name) {
+                if (!processedNames.has(name)) {
+                    const group = Array.from(document.querySelectorAll(`input[name="${name}"]`));
+                    const selected = getRandomIndices(
+                        group.length,
+                        input.type === "checkbox" ? 2 : 1
+                    );
+                    group.forEach((el, idx) => {
+                        el.checked = selected.includes(idx);
+                        el.dispatchEvent(new Event("change", { bubbles: true }));
+                    });
+                    processedNames.add(name);
+                }
                 return;
             }
 
