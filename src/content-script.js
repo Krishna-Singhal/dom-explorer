@@ -293,18 +293,18 @@
         if (!isCouponRelated) return false;
 
         const originalValue = input.value;
-        input.value = "coupon123456789";
+        input.value = "coupon12345678987654321";
         input.dispatchEvent(new Event("input", { bubbles: true }));
         input.dispatchEvent(new Event("change", { bubbles: true }));
 
         results.push({
             elementType: "Coupon",
             id: input.id,
-            status: input.value.length > 10 ? "fail" : "pass",
+            status: input.value.length > 20 ? "fail" : "pass",
             message:
-                input.value.length > 10
-                    ? "Coupon field should restrict input to 10 digits"
-                    : "Coupon field correctly restricts to 10 digits",
+                input.value.length > 20
+                    ? "Coupon field should restrict input to 20 digits"
+                    : "Coupon field correctly restricts to 20 digits",
             details: `Located at: ${getElementPath(input)}`,
         });
 
